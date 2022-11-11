@@ -1,6 +1,6 @@
 {
-  "name": "aws-plex-homepage",
-  "version": "0.1.0",
+  "name": "fumo",
+  "version": "0.1.0-development",
   "private": true,
   "scripts": {
     "dev": "next dev",

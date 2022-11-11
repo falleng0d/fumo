@@ -3,6 +3,7 @@ import Head from "next/head";
 
 import {
   Fragment,
+  PropsWithChildren,
   PropsWithoutRef,
   ReactNode,
   useEffect,
@@ -52,6 +53,27 @@ function StyledDisclosure(props: StyledDisclosureProps) {
   );
 }
 
+function GaleryImage(props: { src: string; alt?: string }) {
+  return (
+    <div className="flex flex-col items-center justify-center w-full h-full shadow-lg rounded-xl overflow-hidden transition-transform	hover:scale-105">
+      <img src={props.src} alt={props.alt} className="w-full h-full" />
+    </div>
+  );
+}
+
+/**
+ * The gallery displays images in a css grid. The maximum size for a single
+ * image is 200px. The grid is responsive and will adjust to the size of the
+ * parent.
+ */
+function Galery(props: PropsWithChildren<any>) {
+  return (
+    <div className="grid grid-cols-3 gap-4 p-4 w-full rounded-xl shadow-lg backdrop-blur-xl">
+      {props.children}
+    </div>
+  );
+}
+
 function FoldableDisclosures() {
   let [isShowing, setIsShowing] = useState(false);
   let [, , resetIsShowing] = useTimeoutFn(() => setIsShowing(true), 500);
@@ -73,78 +95,15 @@ function FoldableDisclosures() {
         <div
           className={`p-2 mx-auto w-full max-w-lg bg-white/75 rounded-2xl ${styles.shadow} mv-10 backdrop-blur-xl flex flex-col gap-1`}
         >
-          <StyledDisclosure open={true} title="Donate!">
-            <a
-              href="https://www.comebackalive.in.ua/donate"
-              className="hover:underline hover:text-blue-500"
-            >
-              <b>🤍 COME BACK ALIVE</b> - &quot;Since its birth in 2014, Come
-              Back Alive has become the largest foundation providing support to
-              the Ukrainian Armed Forces.&quot;
-            </a>
+          <StyledDisclosure open={true} title="Fumo">
+            <b>🤍 Fumo says:</b> FUMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
           </StyledDisclosure>
-          <StyledDisclosure open={true} title="Support Ukrainian Developers">
-            <div className="prose-sm">
-              <a
-                href="https://github.com/chernivtsijs/made-in-ukraine"
-                className="hover:underline hover:text-blue-500"
-              >
-                <div>
-                  <b> Made in Ukraine </b> - A collection of the best projects
-                  that were made and mainly contributed by Ukrainian developers
-                </div>
-              </a>
-              <p className="mb-1"> Some of examples are: </p>
-              <h4 className="mt-0">
-                <a
-                  href="https://github.com/trekhleb/javascript-algorithms"
-                  className="hover:underline hover:text-blue-500"
-                >
-                  JavaScript Algorithms and Data Structures by Oleksii Trekhleb
-                  📝
-                </a>
-              </h4>
-              <h4>
-                <a
-                  href="https://github.com/ansible/ansible"
-                  className="hover:underline hover:text-blue-500"
-                >
-                  Ansible co-maintained by Sviatoslav Sydorenko / Red Hat
-                  Ansible
-                </a>
-              </h4>
-              <h4>
-                <a
-                  href="https://github.com/Leaflet/Leaflet"
-                  className="hover:underline hover:text-blue-500"
-                >
-                  Leaflet 🍃 by Vladimir Agafonkin - JavaScript library for
-                  mobile-friendly interactive maps
-                </a>
-              </h4>
-            </div>
-          </StyledDisclosure>
-          <StyledDisclosure open={true} title="👷 Work In Progress">
-            <div>
-              <p className="mb-2">
-                This page is a work in progress and I will be adding more
-                content through the week!.
-              </p>
-              <p className="mb-2">
-                If you&#39;re interested you can help me by sending me links
-                with useful content that can help in supporting the Ukrainian
-                people.
-              </p>
-              <p className="mb-2">
-                Contact-me on:{" "}
-                <a
-                  href="mailto:juniormateusknd@gmail.com"
-                  className="hover:underline hover:text-blue-500"
-                >
-                  juniormateusknd@gmail.com
-                </a>
-              </p>
-            </div>
+          <StyledDisclosure open={true} title="Fumo Galery!">
+            <Galery>
+              {[...Array(11)].map((_, i) => (
+                <GaleryImage src={`/fumo/${i + 1}_prod.jpg`} />
+              ))}
+            </Galery>
           </StyledDisclosure>
         </div>
       </div>
@@ -154,10 +113,10 @@ function FoldableDisclosures() {
 
 const Home: NextPage = () => {
   return (
-    <div className="h-screen bg-gradient-to-r from-blue-400 via-blue-500 to-yellow-400 relative">
+    <div className="h-screen bg-gradient-to-r from-blue-400 via-pink-500 to-pink-800 relative">
       <div className="py-12 h-screen overflow-y-scroll overflow-x-hidden relative z-10">
         <Head>
-          <title>Help Ukraine!</title>
+          <title>FUMO</title>
           <meta
             name="description"
             content="A collection of useful resources aimed at those who are interested in supporting the people in Ukraine."
@@ -169,16 +128,13 @@ const Home: NextPage = () => {
               className="text-5xl text-center text-white font-cursive
               text-transparent bg-clip-text bg-gradient-to-br from-white to-blue-200 drop-shadow-md mb-4"
             >
-              Support the people in Ukraine!
+              Fumo
             </h1>
             <h2
               className="text-xl text-center text-white font-cursive
               text-transparent bg-clip-text bg-gradient-to-br from-white to-blue-200 drop-shadow-md"
             >
-              <i>
-                A collection of useful resources aimed at those who are
-                interested in supporting the people in Ukraine.{" "}
-              </i>
+              <i>Fumo fumo fumo fumo fumo fumo fumo fumo fumo fumo</i>
             </h2>
           </div>
           <div className="">
