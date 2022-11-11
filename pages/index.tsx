@@ -105,7 +105,7 @@ function FoldableDisclosures() {
         >
           <StyledDisclosure open={true} title="Fumo Galery!">
             <Galery>
-              {[...Array(11)].map((_, i) => (
+              {[...Array(13)].map((_, i) => (
                 <GaleryImage src={`/fumo/${i + 1}_prod.jpg`} key={i} />
               ))}
             </Galery>
