@@ -44,7 +44,7 @@ function StyledDisclosure(props: StyledDisclosureProps) {
               } w-5 h-5 text-blue-500`}
             />
           </Disclosure.Button>
-          <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-900">
+          <Disclosure.Panel className="px-2.5 md:px-4 pt-4 pb-2 text-sm text-gray-900">
             {props.children}
           </Disclosure.Panel>
         </div>
@@ -68,7 +68,7 @@ function GaleryImage(props: { src: string; alt?: string }) {
  */
 function Galery(props: PropsWithChildren<any>) {
   return (
-    <div className="grid grid-cols-3 gap-4 p-4 w-full rounded-xl shadow-lg backdrop-blur-xl">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 p-4 w-full rounded-xl shadow-lg backdrop-blur-xl">
       {props.children}
     </div>
   );
@@ -93,10 +93,12 @@ function FoldableDisclosures() {
     >
       <div className="px-4 pt-8 w-full">
         <div
-          className={`p-2 mx-auto w-full max-w-lg bg-white/75 rounded-2xl ${styles.shadow} mv-10 backdrop-blur-xl flex flex-col gap-1`}
+          className={`p-1.5 sm:p-2 mx-auto w-full max-w-lg bg-white/75 rounded-2xl ${styles.shadow} mv-10 backdrop-blur-xl flex flex-col gap-1`}
         >
           <StyledDisclosure open={true} title="Fumo">
-            <b>🤍 Fumo says:</b> FUMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            <div className="break-words">
+              <b>🤍 Fumo says:</b> FUMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+            </div>
           </StyledDisclosure>
           <StyledDisclosure open={true} title="Fumo Galery!">
             <Galery>
