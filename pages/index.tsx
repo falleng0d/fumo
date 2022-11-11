@@ -16,6 +16,7 @@ import { useTimeoutFn } from "react-use";
 
 import styles from "../styles/index.module.css";
 import { GrayTranspButton } from "../components/grayTranspButton";
+import Image from "next/image";
 
 export const getStaticProps = async (context: NextPageContext) => ({
   props: {},
@@ -56,7 +57,14 @@ function StyledDisclosure(props: StyledDisclosureProps) {
 function GaleryImage(props: { src: string; alt?: string }) {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full shadow-lg rounded-xl overflow-hidden transition-transform	hover:scale-105">
-      <img src={props.src} alt={props.alt} className="w-full h-full" />
+      <Image
+        src={props.src}
+        alt={props.alt}
+        width={300}
+        height={300}
+        className="w-full h-full w-min"
+        layout="intrinsic"
+      />
     </div>
   );
 }
@@ -95,15 +103,10 @@ function FoldableDisclosures() {
         <div
           className={`p-1.5 sm:p-2 mx-auto w-full max-w-lg bg-white/75 rounded-2xl ${styles.shadow} mv-10 backdrop-blur-xl flex flex-col gap-1`}
         >
-          <StyledDisclosure open={true} title="Fumo">
-            <div className="break-words">
-              <b>🤍 Fumo says:</b> FUMOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-            </div>
-          </StyledDisclosure>
           <StyledDisclosure open={true} title="Fumo Galery!">
             <Galery>
               {[...Array(11)].map((_, i) => (
-                <GaleryImage src={`/fumo/${i + 1}_prod.jpg`} />
+                <GaleryImage src={`/fumo/${i + 1}_prod.jpg`} key={i} />
               ))}
             </Galery>
           </StyledDisclosure>
