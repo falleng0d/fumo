@@ -34,9 +34,6 @@ COPY --from=builder /app/package.json ./package.json
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/ ./.next
 
-RUN npm install -g next@^12.1.0
-RUN npm install -g sharp@^0.31.2
-
 USER nextjs
 
 EXPOSE 3000
